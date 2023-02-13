@@ -35,12 +35,14 @@ jobs:
           tenant-id: 378420bb-91e2-4f74-9cd8-69e36a49ef82
           subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
 
-      - name: Deploy Infrastructure
+
+      - name: Checkout
         uses: actions/checkout@v3
         with:
-           i ref: self
+          ref: self
         
 
+      - name: Deploy Infrastructure
         run: az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
 
