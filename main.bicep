@@ -62,6 +62,19 @@ resource azStorageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
 }
 
+resource azAppInsights 'Microsoft.Insights/components@2020-02-02' = {
+  name: '${envResourceNamePrefix}-ai'
+  location: location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+    publicNetworkAccessForIngestion: true
+    publicNetworkAccessForQuery: true
+
+  }
+
+}
+
 resource azHostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   location: location
   name: '${envResourceNamePrefix}-asp'
@@ -102,6 +115,10 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           name: 'X_KEY'
           value: assetIdApiXKey
 
+        }
+        {
+          name: 'AzureWebJobsStorage'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${envResourceNamePrefix}storage};EndpointSuffix=${environment().suffixes.storage};AccountKey=${azStorageAccount.listKeys().keys[0].value}'
         }
 
       ]
