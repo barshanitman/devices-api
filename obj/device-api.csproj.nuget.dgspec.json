@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/barshanitman/Desktop/device-api/device-api.csproj": {}
+    "/Users/barshanitman/Desktop/devices-api/device-api.csproj": {}
   },
   "projects": {
-    "/Users/barshanitman/Desktop/device-api/device-api.csproj": {
+    "/Users/barshanitman/Desktop/devices-api/device-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/barshanitman/Desktop/device-api/device-api.csproj",
+        "projectUniqueName": "/Users/barshanitman/Desktop/devices-api/device-api.csproj",
         "projectName": "device-api",
-        "projectPath": "/Users/barshanitman/Desktop/device-api/device-api.csproj",
+        "projectPath": "/Users/barshanitman/Desktop/devices-api/device-api.csproj",
         "packagesPath": "/Users/barshanitman/.nuget/packages/",
-        "outputPath": "/Users/barshanitman/Desktop/device-api/obj/",
+        "outputPath": "/Users/barshanitman/Desktop/devices-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/barshanitman/.nuget/NuGet/NuGet.Config"
@@ -70,7 +70,7 @@
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
