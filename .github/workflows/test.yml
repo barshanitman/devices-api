@@ -25,7 +25,6 @@ jobs:
   deploy_infra:
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
-    needs: [deploy_infra]
     
     steps:
       - name: Checkout repo codebase
@@ -51,6 +50,7 @@ jobs:
   deploy_app:
     name: Deploy to Azure Function app staging slot
     runs-on: ubuntu-latest
+    needs: [deploy_infra]
     steps:
       - name: 🧲 Extract deployment job ouputs to env variables
         run: |
