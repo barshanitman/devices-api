@@ -94,12 +94,12 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
 
         }
         {
-          name: 'API-URL'
+          name: 'API_URL'
           value: assetIdApiUrl
 
         }
         {
-          name: 'X-KEY'
+          name: 'X_KEY'
           value: assetIdApiXKey
 
         }
