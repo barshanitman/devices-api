@@ -69,13 +69,13 @@ namespace Vnext.Function
         {
 
 
-            _httpClient.DefaultRequestHeaders.Add("x-functions-key", Environment.GetEnvironmentVariable("X-KEY"));
+            _httpClient.DefaultRequestHeaders.Add("x-functions-key", Environment.GetEnvironmentVariable("X_KEY"));
             // var response = await _httpClient.GetAsync($"http://tech-assessment.vnext.com.au/api/devices/assetId/{deviceId}");
             List<string> urls = new List<string>();
             foreach (Devices device in devices)
             {
 
-                urls.Add(Environment.GetEnvironmentVariable("API-URL") + "DVID" + device.Id);
+                urls.Add(Environment.GetEnvironmentVariable("API_URL") + "DVID" + device.Id);
 
             }
 
