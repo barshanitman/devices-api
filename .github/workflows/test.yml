@@ -67,7 +67,7 @@ jobs:
           echo "FUNCTION_APP_NAME=$(az deployment group show --name ${{ env.DEPLOYMENT_NAME }} --resource-group ${{env.RESOURCE_GROUP}}  --query 'properties.outputs.functionAppName.value' --output tsv)" >> $GITHUB_ENV
         env:
           DEPLOYMENT_NAME: ${{ env.DEPLOYMENT_NAME }}
-          RESOURCE_GROUP: VNextDeployment
+          RESOURCE_GROUP: ${{env.RESOURCE_GROUP}}
 
     ######################################################################
 # acquire publish profile for Azure Functions App
