@@ -42,8 +42,4 @@ jobs:
       #    az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
       - name: Deploy
-        uses: azure/CLI@v1
-        with:
-         azcliversion: 2.30.0
-         inlineScript: |
-          az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+        run: cd Repos && ls
