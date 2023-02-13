@@ -37,9 +37,9 @@ jobs:
 
 
       - name: Deploy Infrastructure
-        working-directory: ${{github.workspace}}
+        working-directory: ${{github.workspace}}/
         run: |
-         az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file ./main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+         az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
      
 
