@@ -86,6 +86,9 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: 'Checkout GitHub action'
+        uses: actions/checkout@v2
+
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
         run: |
