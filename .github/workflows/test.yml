@@ -36,11 +36,7 @@ jobs:
           subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
 
 
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: self
-        
+       
 
       - name: Deploy Infrastructure
         run: az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file ./main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
