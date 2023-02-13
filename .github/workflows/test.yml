@@ -36,11 +36,16 @@ jobs:
           subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
 
 
-      - name: Deploy Infrastructure
-        run: |
-         az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file ./main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+      # - name: Deploy Infrastructure
+      #   run: |
+      #    az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file ./main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
-
+      - name: Deploy Azure Bicep
+        uses: Azure/arm-deploy@v1
+        with:
+          resourceGroupName: VNextDeployment
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          template: ./main.bicep
   
 
 
