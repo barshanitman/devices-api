@@ -120,6 +120,10 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           value: assetIdApiXKey
 
         }
+        {
+          name: 'FUNCTIONS_WORKER_RUNTIME'
+          value: 'dotnet'
+        }
 
       ]
 
