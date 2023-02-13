@@ -129,9 +129,4 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
 
 }
 
-resource functionAppSettings 'Microsoft.Web/sites/config@2022-03-01' = {
-  name: '${azFunctionApp}/appsettings'
-
-}
-
 output functionAppName string = azFunctionApp.name
