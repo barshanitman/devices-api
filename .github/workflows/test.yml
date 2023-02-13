@@ -43,7 +43,7 @@ jobs:
         
 
       - name: Deploy Infrastructure
-        run: az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+        run: az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file ./main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
 
   
