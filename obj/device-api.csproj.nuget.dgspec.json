@@ -70,11 +70,11 @@
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[5.0.0, )"
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[6.0.13, )"
+              "version": "[5.0.0, )"
             },
             "Microsoft.NET.Sdk.Functions": {
               "target": "Package",
