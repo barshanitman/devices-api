@@ -116,12 +116,21 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           value: assetIdApiXKey
 
         }
+        {
+          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${azStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(azStorageAccount.id, azStorageAccount.apiVersion).keys[0].value}'
+        }
 
       ]
 
     }
 
   }
+
+}
+
+resource functionAppSettings 'Microsoft.Web/sites/config@2022-03-01' = {
+  name: '${azFunctionApp}/appsettings'
 
 }
 
