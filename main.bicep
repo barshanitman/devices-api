@@ -99,8 +99,12 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: azHostingPlan.id
     siteConfig: {
       alwaysOn: true
-      linuxFxVersion: 'DOTNETCORE:6.0'
+      linuxFxVersion: 'DOTNETCORE|6.0'
       appSettings: [
+        {
+          name: 'AzureWebJobsStorage'
+          value: 'DefaultEndpointsProtocol=https;AccountName=barshanstorage;AccountKey=2a1qlSsOBFhQRwY4GaeM0tjj9BpfN63GuJ0awMhOAXzre/3SFPzZdjwB4ahee7ua/pRYeA44+KM1+AStnOvVUA==;EndpointSuffix=core.windows.net'
+        }
         {
           name: 'CONNECTION_STRING'
           value: dbConnectionString
@@ -115,10 +119,6 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           name: 'X_KEY'
           value: assetIdApiXKey
 
-        }
-        {
-          name: 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${azStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(azStorageAccount.id, azStorageAccount.apiVersion).keys[0].value}'
         }
 
       ]
