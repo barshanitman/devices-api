@@ -27,7 +27,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      
+
+       
+      - name: Checkout repo codebase
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+          clean: true
+          submodules: false
+ 
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -36,10 +44,7 @@ jobs:
           subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
 
 
-      # - name: Deploy Infrastructure
-      #   working-directory: ${{github.workspace}}/
-      #   run: |
-      #    az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
-
-      - name: Deploy
-        run: cd Repos && ls
+      - name: Deploy Infrastructure
+        working-directory: ${{github.workspace}}/
+        run: |
+         az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
