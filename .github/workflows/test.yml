@@ -36,15 +36,14 @@ jobs:
           subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
 
 
-      - name: Deploy Infrastructure
-        working-directory: ${{github.workspace}}/
-        run: |
-         az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+      # - name: Deploy Infrastructure
+      #   working-directory: ${{github.workspace}}/
+      #   run: |
+      #    az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
 
-     
-
-
-
-
-  
-
+      - name: Deploy
+        uses: azure/CLI@v1
+        with:
+         azcliversion: 2.30.0
+         inlineScript: |
+          az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
