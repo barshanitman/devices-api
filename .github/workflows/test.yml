@@ -25,7 +25,7 @@ jobs:
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
     steps:
-      - checkout: self
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
