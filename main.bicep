@@ -116,10 +116,6 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           value: assetIdApiXKey
 
         }
-        {
-          name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${envResourceNamePrefix}storage};EndpointSuffix=${environment().suffixes.storage};AccountKey=${azStorageAccount.listKeys().keys[0].value}'
-        }
 
       ]
 
