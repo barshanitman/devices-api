@@ -1,0 +1,5 @@
+{
+  "extensions":[
+    { "name": "Startup", "typeName":"Vnext.Function.Startup, device-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"}
+  ]
+}

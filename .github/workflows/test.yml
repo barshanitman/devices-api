@@ -1,0 +1,47 @@
+name: Build, test and deploy
+
+on:
+  push:
+    branches:
+      - "master"
+    
+
+env:
+  DOTNVET_VERSION: "6.0.x"
+  client-id: ${{secrets.AZURE_CLIENT_ID}}
+  tenant-id: $${{secrets.AZURE_TENANT_ID}}
+  subscription-id: $${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+
+ 
+  AZURE_FUNCTION_APP_PACKAGE_PATH: ''
+
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy_infra:
+    name: Deploy Infrastructure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: 2df375a8-7f24-4d14-954f-094589849495
+          tenant-id: 378420bb-91e2-4f74-9cd8-69e36a49ef82
+          subscription-id: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
+
+      - name: Deploy Infrastructure
+        run: az deployment group create --name MyDeploy1 --resource-group VNextDeployment --template-file main.bicep --parameters resourceNamePrefix=barshan adminLogin=alohauser adminPassword=!Aloha27
+
+
+  
+
+
+
+
+
+  
+
