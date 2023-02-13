@@ -84,10 +84,35 @@ jobs:
 ######################################################################
 # deploy function app
 ######################################################################
-      - name: 🚀 Deploy Azure Functions app
+
+      - name: 'Checkout GitHub action'
+        uses: actions/checkout@v2
+
+      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: 'Resolve Project Dependencies Using Dotnet'
+        shell: bash
+        run: |
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          dotnet build --configuration Release --output ./output
+          popd
+      - name: 'Run Azure Functions action'
         uses: Azure/functions-action@v1
         with:
-          app-name: barshan-app
-          package: '.'
-          publish-profile: <publishData><publishProfile profileName="barshan-app - Web Deploy" publishMethod="MSDeploy" publishUrl="barshan-app.scm.azurewebsites.net:443" msdeploySite="barshan-app" userName="$barshan-app" userPWD="vhsalQYz1NgYsl0nu1F3vBHS7SoopawEcqauzMvdDBW9igJGCaKuyjy5X36T" destinationAppUrl="http://barshan-app.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="barshan-app - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-sy3-097.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="barshan-app\$barshan-app" userPWD="vhsalQYz1NgYsl0nu1F3vBHS7SoopawEcqauzMvdDBW9igJGCaKuyjy5X36T" destinationAppUrl="http://barshan-app.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="barshan-app - Zip Deploy" publishMethod="ZipDeploy" publishUrl="barshan-app.scm.azurewebsites.net:443" userName="$barshan-app" userPWD="vhsalQYz1NgYsl0nu1F3vBHS7SoopawEcqauzMvdDBW9igJGCaKuyjy5X36T" destinationAppUrl="http://barshan-app.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>
-          respect-funcignore: true
+          app-name: ${{ env.FUNCTIONAPP_NAME }}
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+          publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }} 
+
+
+      # - name: 🚀 Deploy Azure Functions app
+      #   uses: Azure/functions-action@v1
+      #   with:
+      #     app-name: ${{env.FUNCTION_APP_NAME}}
+      #     package: '.'
+      #     publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }}
+      #     respect-funcignore: true
+
+      
