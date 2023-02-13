@@ -103,7 +103,7 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
       appSettings: [
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=barshanstorage;AccountKey=2a1qlSsOBFhQRwY4GaeM0tjj9BpfN63GuJ0awMhOAXzre/3SFPzZdjwB4ahee7ua/pRYeA44+KM1+AStnOvVUA==;EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${azStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${azStorageAccount.listKeys().keys[0].value}'
         }
         {
           name: 'CONNECTION_STRING'
