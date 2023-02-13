@@ -68,51 +68,13 @@ jobs:
           DEPLOYMENT_NAME: ${{ env.DEPLOYMENT_NAME }}
           RESOURCE_GROUP: VNextDeployment
 
-######################################################################
-# acquire publish profile for Azure Functions App
-######################################################################
-      - name: ⬇️ Download Azure Function app publishing profile
-        id: az_funcapp_publishing_profile
-        run: |
-              echo "FUNCTION_APP_PUB_PROFILE=$(az functionapp deployment list-publishing-profiles --subscription $AZURE_SUBSCRIPTION_ID --resource-group $FUNCTION_APP_RESOURCE_GROUP --name ${{env.FUNCTION_APP_NAME}} --xml)" >> $GITHUB_ENV
-        env:
-          AZURE_SUBSCRIPTION_ID: c47ff2f8-307d-465d-9b9b-7ee0a3862cd9
-          FUNCTION_APP_RESOURCE_GROUP: VNextDeployment
-          FUNCTION_APP_NAME: ${{ env.FUNCTION_APP_NAME }}
 
-
-######################################################################
-# deploy function app
-######################################################################
-
-      - name: 'Checkout GitHub action'
-        uses: actions/checkout@v2
-
-      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: 'Resolve Project Dependencies Using Dotnet'
-        shell: bash
-        run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          dotnet build --configuration Release --output ./output
-          popd
-      - name: 'Run Azure Functions action'
+      - name: 🚀 Deploy Azure Functions app
         uses: Azure/functions-action@v1
         with:
-          app-name: barshan-app
-          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }} 
-
-
-      # - name: 🚀 Deploy Azure Functions app
-      #   uses: Azure/functions-action@v1
-      #   with:
-      #     app-name: ${{env.FUNCTION_APP_NAME}}
-      #     package: '.'
-      #     publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }}
-      #     respect-funcignore: true
+          app-name: ${{env.FUNCTION_APP_NAME}}
+          package: '.'
+          publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }}
+          respect-funcignore: true
 
       
