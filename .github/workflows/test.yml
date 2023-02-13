@@ -25,6 +25,7 @@ jobs:
   deploy_infra:
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
+    needs: [deploy_infra]
     
     steps:
       - name: Checkout repo codebase
