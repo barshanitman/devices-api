@@ -93,6 +93,8 @@ jobs:
         shell: bash
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          dotnet ef migrations add FirstMigration
+          dotnet ef database update
           dotnet build --configuration Release --output ./output
           popd
 
