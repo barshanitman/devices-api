@@ -34,7 +34,14 @@ namespace Vnext.Function
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
+
+
+
+
+
+
             // Then all subsequent manual serialization will be done with this setting.
+
 
 
 

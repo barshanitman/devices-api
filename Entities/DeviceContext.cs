@@ -10,7 +10,7 @@ namespace Vnext.Function.Entities
         public DeviceContext(DbContextOptions<DeviceContext> options) : base(options) { }
 
 
-        public DeviceContext() { }
+        public DeviceContext() { this.Database.Migrate(); }
 
         public DbSet<Devices> Devices { get; set; }
 
