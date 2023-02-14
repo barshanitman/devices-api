@@ -99,7 +99,7 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: azHostingPlan.id
     siteConfig: {
       alwaysOn: true
-      linuxFxVersion: 'DOTNETCORE|3.1'
+      linuxFxVersion: 'DOTNET|6.0'
 
       appSettings: [
         {
