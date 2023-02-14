@@ -104,5 +104,3 @@ jobs:
           package: './output'
           publish-profile: ${{ env.FUNCTION_APP_PUB_PROFILE }}
           respect-funcignore: true
-
-      
