@@ -13,7 +13,7 @@ env:
   subscription-id: $${{secrets.AZURE_SUBSCRIPTION_ID}}
   AZURE_FUNCTION_APP_PACKAGE_PATH: ''
   DEPLOYMENT_NAME: GH_CICD_${{github.run_id}}
-  RESOURCE_GROUP: DeploymentContainer
+  RESOURCE_GROUP: VNextDeploy
   FUNCTION_APP_NAME: barshan-app
 
 
