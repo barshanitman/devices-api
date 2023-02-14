@@ -25,7 +25,7 @@ namespace Vnext.Function
                 policy => policy.OrResult(r => r.StatusCode == HttpStatusCode.BadRequest).WaitAndRetryAsync(10, _ => TimeSpan.FromSeconds(1))
 
             );
-            string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING", EnvironmentVariableTarget.Process);
 
             builder.Services.AddDbContext<DeviceContext>(
             options => SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString));
