@@ -23,8 +23,9 @@ namespace device_api.Migrations
 
             modelBuilder.Entity("Devices", b =>
                 {
-                    b.Property<string>("DeviceId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("DeviceId");
 
                     b.Property<string>("AssetId")
                         .HasColumnType("nvarchar(max)");
@@ -38,7 +39,7 @@ namespace device_api.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DeviceId");
+                    b.HasKey("Id");
 
                     b.ToTable("Devices");
                 });

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JrRq1Rp8CTIdEfkrqsljFz6ogZL/y8KzhQ5MpnW3qdZgU8x+lsHTKvc5E5hrjv/at+5PNo+KGTc1YQ0h014YUw==",
+  "dgSpecHash": "cNQ9rS29emuDn+uo4H/f4c9kp7J4jaGRUAYqWVkED2eZ3EGjP5aFXL8rd20fyFRHEOFXNgtAFllhJPdMpGF4kw==",
   "success": true,
   "projectFilePath": "/Users/barshanitman/Desktop/devices-api/device-api.csproj",
   "expectedPackageFiles": [
@@ -46,7 +46,7 @@
     "/Users/barshanitman/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.13/microsoft.entityframeworkcore.analyzers.6.0.13.nupkg.sha512",
     "/Users/barshanitman/.nuget/packages/microsoft.entityframeworkcore.design/6.0.13/microsoft.entityframeworkcore.design.6.0.13.nupkg.sha512",
     "/Users/barshanitman/.nuget/packages/microsoft.entityframeworkcore.relational/6.0.13/microsoft.entityframeworkcore.relational.6.0.13.nupkg.sha512",
-    "/Users/barshanitman/.nuget/packages/microsoft.entityframeworkcore.sqlserver/6.0.13/microsoft.entityframeworkcore.sqlserver.6.0.13.nupkg.sha512",
+    "/Users/barshanitman/.nuget/packages/microsoft.entityframeworkcore.sqlserver/6.0.1/microsoft.entityframeworkcore.sqlserver.6.0.1.nupkg.sha512",
     "/Users/barshanitman/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/barshanitman/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "/Users/barshanitman/.nuget/packages/microsoft.extensions.caching.memory/6.0.1/microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",

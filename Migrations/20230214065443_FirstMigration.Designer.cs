@@ -11,7 +11,7 @@ using Vnext.Function.Entities;
 namespace device_api.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    [Migration("20230208065230_FirstMigration")]
+    [Migration("20230214065443_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,8 +25,9 @@ namespace device_api.Migrations
 
             modelBuilder.Entity("Devices", b =>
                 {
-                    b.Property<string>("DeviceId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("DeviceId");
 
                     b.Property<string>("AssetId")
                         .HasColumnType("nvarchar(max)");
@@ -40,7 +41,7 @@ namespace device_api.Migrations
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DeviceId");
+                    b.HasKey("Id");
 
                     b.ToTable("Devices");
                 });

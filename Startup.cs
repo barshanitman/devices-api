@@ -11,6 +11,8 @@ using Microsoft.Extensions.Http;
 using Polly;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Vnext.Function.Entities;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 [assembly: FunctionsStartup(typeof(Vnext.Function.Startup))]
 namespace Vnext.Function
@@ -20,25 +22,22 @@ namespace Vnext.Function
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
+
             builder.Services.AddTransient<IDeviceAsset, DeviceAsset>();
             builder.Services.AddHttpClient<IDeviceAsset, DeviceAsset>().AddTransientHttpErrorPolicy(
                 policy => policy.OrResult(r => r.StatusCode == HttpStatusCode.BadRequest).WaitAndRetryAsync(10, _ => TimeSpan.FromSeconds(1))
 
             );
-            string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING", EnvironmentVariableTarget.Process);
+            string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+
 
             builder.Services.AddDbContext<DeviceContext>(
-            options => SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString));
+            options => SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString.ToString()));
             builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
-
-
-
-
-
 
             // Then all subsequent manual serialization will be done with this setting.
 
