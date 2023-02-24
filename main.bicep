@@ -125,6 +125,10 @@ resource azFunctionApp 'Microsoft.Web/sites@2022-03-01' = {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'dotnet'
         }
+        {
+          name: 'FUNCTIONS_EXTENSION_VERSION'
+          value: '~4'
+        }
 
       ]
 
