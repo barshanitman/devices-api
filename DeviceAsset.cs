@@ -59,7 +59,6 @@ namespace Vnext.Function
 
                 device.AssetId = assetids.Where(item => item.deviceId == ("DVID" + device.Id)).First().assetId;
 
-
             }
 
             return listOfDevices;
