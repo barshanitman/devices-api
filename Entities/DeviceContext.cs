@@ -12,7 +12,6 @@ namespace Vnext.Function.Entities
 
         public DbSet<Devices> Devices { get; set; }
 
-
     }
 
 }
